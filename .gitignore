@@ -1,0 +1,6 @@
+# file
+repodir
+
+# cache
+/.idea
+.DS_Store
