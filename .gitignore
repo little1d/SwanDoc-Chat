@@ -2,7 +2,7 @@
 repodir
 .env
 temp/
-
+playground/
 
 # cache
 .idea/

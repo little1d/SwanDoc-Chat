@@ -1,0 +1,11 @@
+python-dotenv
+loguru
+BCEmbedding
+langchain_community
+langchain_huggingface
+zhipu
+openai
+textract
+markdown
+zhipuai
+faiss-cpu
