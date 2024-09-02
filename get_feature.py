@@ -41,37 +41,37 @@ class FeatureStore:
         ])
         self.enable_multimodal = False
 
-        # 分块策略
-        def _split_md(self ,text: str, source: None):
-            docs = self.head_splitter.split_text(text)
+    # 分块策略
+    def _split_md(self ,text: str, source: None):
+        docs = self.head_splitter.split_text(text)
 
-            final = []
-            for doc in docs:
-                header = ''
-                if len(doc.metadata) > 0:
-                    if 'Header 1' in doc.metadata:
-                        header += doc.metadata['Header 1']
-                    if 'Header 2' in doc.metadata:
-                        header += ' '
-                        header += doc.metadata['Header 2']
-                    if 'Header 3' in doc.metadata:
-                        header += ' '
-                        header += doc.metadata['Header 3']
-                if len(doc.page_content) >= 1024:
-                    subdocs = self.md_splitter.create_documents([doc.page_content])
-                    for subdoc in subdocs:
-                        if len(subdoc.page_content) >= 10:
-                            final.append('{} {}'.format(
-                                header, subdoc.page_content.lower()))
-                elif len(doc.page_content) >= 10:
-                    final.append('{} {}'.format(
-                        header, doc.page_content.lower()))
+        final = []
+        for doc in docs:
+            header = ''
+            if len(doc.metadata) > 0:
+                if 'Header 1' in doc.metadata:
+                    header += doc.metadata['Header 1']
+                if 'Header 2' in doc.metadata:
+                    header += ' '
+                    header += doc.metadata['Header 2']
+                if 'Header 3' in doc.metadata:
+                    header += ' '
+                    header += doc.metadata['Header 3']
+            if len(doc.page_content) >= 1024:
+                subdocs = self.md_splitter.create_documents([doc.page_content])
+                for subdoc in subdocs:
+                    if len(subdoc.page_content) >= 10:
+                        final.append('{} {}'.format(
+                            header, subdoc.page_content.lower()))
+            elif len(doc.page_content) >= 10:
+                final.append('{} {}'.format(
+                    header, doc.page_content.lower()))
 
-            for item in final:
-                if len(item) >= 1024:
-                    logger.debug('source {} split length {}'.format(
-                        source, len(item)))
-            return final
+        for item in final:
+            if len(item) >= 1024:
+                logger.debug('source {} split length {}'.format(
+                    source, len(item)))
+        return final
 
 
     # 清洗markdown文档，移除不包含关键问题因素
@@ -234,6 +234,7 @@ class FeatureStore:
         return counter, state_map
 
 
+# 模型加载+特征提取测试
 if __name__ == '__main__':
     cache = CacheRetriever()
     fs_init = FeatureStore(embeddings=cache.embeddings,
