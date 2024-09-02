@@ -1,6 +1,11 @@
 # file
 repodir
+.env
+temp/
+
 
 # cache
-/.idea
+.idea/
 .DS_Store
+__pycache__/
+workdir/
