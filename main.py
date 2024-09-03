@@ -34,8 +34,8 @@ retriever = cache.get(work_dir=Config.work_dir)
 
 system_prompt = '问题：“{}” \n 材料：“{}”\n  '
 
-if __name__ ==  "__main":
-    question = '怎么在代码中使用 swanlab记录实验？'
+if __name__ ==  '__main__':
+    question = '怎么在代码中使用swanlab api记录实验？'
     chunk, db_context, references = retriever.query(question)
     input_prompt = system_prompt.format(question,db_context)
     result = chat(input_prompt, "zhipuai")
