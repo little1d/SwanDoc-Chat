@@ -1,13 +1,13 @@
 """入口文件"""
-from platform import system
-
 from dotenv import load_dotenv
+from matplotlib.pyplot import title
+
 load_dotenv()
-import openai
 import os
 from swchatbot.rag import CacheRetriever
 from swchatbot.config import Config
 from zhipuai import ZhipuAI
+import gradio as gr
 
 zhipuai_key = os.getenv("zhipuai_key")
 
@@ -34,9 +34,20 @@ retriever = cache.get(work_dir=Config.work_dir)
 
 system_prompt = '问题：“{}” \n 材料：“{}”\n  '
 
-if __name__ ==  '__main__':
-    question = '怎么在代码中使用swanlab api记录实验？'
+def chatbot_interface(question):
     chunk, db_context, references = retriever.query(question)
     input_prompt = system_prompt.format(question,db_context)
     result = chat(input_prompt, "zhipuai")
     print(result)
+    return result
+
+if __name__ ==  '__main__':
+    interface = gr.Interface(
+        fn=chatbot_interface,
+        inputs=gr.Textbox(lines=2, label='input', placeholder="请输入你的问题..."),
+        outputs='text',
+        title = '🤓SwanDoc-Chat',
+        description='chat with SwanLab Docs',
+        examples=["怎么使用 swanlab 记录实验？","swanlab 是什么?"]
+    )
+    interface.launch()

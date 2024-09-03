@@ -9,3 +9,4 @@ textract
 markdown
 zhipuai
 faiss-cpu
+gradio
