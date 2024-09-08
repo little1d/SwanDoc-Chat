@@ -110,8 +110,8 @@ app.py
 
 ## 路线图
 
-- [ ] 支持 gradio，释放最初简版，包括体验地址(SwanHub, ModelScope创空间)
-- [ ] 完成可复现文档
+- [x] 支持 gradio，释放最初简版，包括体验地址(SwanHub)
+- [x] 完成可复现文档
 - [ ] 支持更多llm模型接口
 - [ ] 使用 weaviate 数据库
 - [ ] ollama微调glm-flash，并部署服务
