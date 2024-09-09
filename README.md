@@ -20,22 +20,17 @@ SwanLab是一款开源、轻量级的AI实验跟踪工具，提供了一个跟�
 
 #### 1.2 python 环境
 
-* python>=3.10
-* pytorch>=2.0.0
+* `python>=3.10`
+* `pytorch>=2.0.0`
 
 ```python
 # 创建 Conda 环境
-conda
-create - n
-swandocchat
-python == 3.10
-conda
-activate
-swandocchat
+conda create -n swandocchat python == 3.10
+
+conda activate swandocchat
 # 安装依赖项
-pip
-install - r
-requirements.txt
+
+pip install - r requirements.txt
 ```
 
 #### 1.3 .env 文件配置
@@ -76,8 +71,7 @@ HF_TOKEN = ''
 完成仓库克隆以及所有环境配置后，运行一下命令对`repodir`文件夹内的文件进行特征抽取：
 
 ```python
-python
-get_feature.py
+python get_feature.py
 ```
 
 ### Step 4：提问交互
@@ -85,8 +79,7 @@ get_feature.py
 运行入口文件app.py基于抽取之后的特征数据开始对话
 
 ```python
-python
-app.py
+python app.py
 ```
 
 ## 项目结构
