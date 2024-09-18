@@ -122,3 +122,5 @@ python app.py
 - [HuixiangDou: Overcoming Group Chat Scenarios with LLM-based Technical Assistance](https://github.com/InternLM/HuixiangDou)
 
 - [ChatWithDataWhale](https://github.com/sanbuphy/ChatWithDatawhale)
+
+- [InternLM](https://github.com/InternLM/Tutorial)
