@@ -50,7 +50,6 @@ if __name__ == "__main__":
         fn=chatbot_interface,
         inputs=gr.Textbox(lines=2, label="input", placeholder="请输入你的问题..."),
         outputs="text",
-        title="🤓SwanDoc-Chat",
         description="chat with SwanLab Docs",
         examples=["怎么使用 swanlab 记录实验？", "swanlab 是什么?"],
     )
